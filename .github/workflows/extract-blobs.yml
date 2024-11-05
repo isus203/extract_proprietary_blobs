@@ -102,8 +102,11 @@ jobs:
       
     - name: Push to Github as Repository
       run: |
+        cd android
         ls -al
-        cd android/vendor/${{ env.DVN }}
+        cd vendor
+        ls -al
+        cd ${{ env.DVN }}
         if [ -d ${{ env.DCN }} ]; then
         cd ${{ env.DCN }}
         else
