@@ -98,7 +98,12 @@ jobs:
         
     - name: Push to Github as Repository
       run: |
-        cd workspace/android/vendor/${{ env.DVN }}/${{ env.DCN }}
+        cd workspace/android/vendor/${{ env.DVN }}
+        if [ -d ${{ env.DCN }} ]; then
+        cd ${{ env.DCN }}
+        else
+        cd FULL-64*
+        fi
         git init
         git branch -M ${{ env.DCN }}
         git add .
