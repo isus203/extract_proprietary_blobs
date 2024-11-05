@@ -80,19 +80,19 @@ jobs:
     - name: Clone Firmware Dump
       run: |
         mkdir workspace && cd workspace
-        git clone --depth=1 ${{ env.FDR }} -b ${{ env.FDB }} ./firmware-dump
+        git clone ${{ env.FDR }} -b ${{ env.FDB }} ./firmware-dump
 
     - name: Clone Device Tree
       run: |
         cd workspace
-        git clone --depth=1 ${{ env.DTR }} -b ${{ env.DTB }} ./android/device/${{ env.DVN }}/${{ env.DCN }}
+        git clone ${{ env.DTR }} -b ${{ env.DTB }} ./android/device/${{ env.DVN }}/${{ env.DCN }}
 
     - name: Clone LineageOS Tools and Utils
       run: |
         cd workspace
-        git clone --depth=1 https://github.com/LineageOS/android_tools_extract-utils -b lineage-20.0 ./android/tools/extract-utils
+        git clone https://github.com/LineageOS/android_tools_extract-utils -b lineage-21.0 ./android/tools/extract-utils
         echo "Done cloning extract-utils."
-        git clone --depth=1  https://github.com/LineageOS/android_prebuilts_extract-tools -b lineage-20.0 ./android/prebuilts/extract-tools
+        git clone https://github.com/LineageOS/android_prebuilts_extract-tools -b lineage-21.0 ./android/prebuilts/extract-tools
         echo "Done cloning extract-tools."
 
     - name: Extracting Files from Dump
