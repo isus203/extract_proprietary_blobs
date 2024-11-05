@@ -7,18 +7,10 @@ on:
         description: 'Your Firmware Dump URL'
         required: true
         default: 'https://gitlab.com/kelexine/tecno-spark-8c-kg5j-rom-dump.git'
-      FIRMWARE_DUMP_BRANCH:
-        description: 'The Firmware Dump Branch'
-        required: true
-        default: 'main'
       DEVICE_TREE_REPO:
         description: 'Your Android Device Tree URL'
         required: true
         default: 'https://github.com/kelexine/android_device_tecno_kelly'
-      DEVICE_TREE_BRANCH:
-        description: 'Your Android Device Tree Branch'
-        required: true
-        default: 'lineage-18.1'
       DEVICE_CODENAME:
         description: 'Your Device Codename'
         required: true
@@ -80,19 +72,19 @@ jobs:
     - name: Clone Firmware Dump
       run: |
         mkdir workspace && cd workspace
-        git clone ${{ env.FDR }} -b ${{ env.FDB }} ./firmware-dump
+        git clone ${{ env.FDR }} ./firmware-dump
 
     - name: Clone Device Tree
       run: |
         cd workspace
-        git clone ${{ env.DTR }} -b ${{ env.DTB }} ./android/device/${{ env.DVN }}/${{ env.DCN }}
+        git clone ${{ env.DTR }} ./android/device/${{ env.DVN }}/${{ env.DCN }}
 
     - name: Clone LineageOS Tools and Utils
       run: |
         cd workspace
-        git clone https://github.com/LineageOS/android_tools_extract-utils -b lineage-21.0 ./android/tools/extract-utils
+        git clone https://github.com/LineageOS/android_tools_extract-utils ./android/tools/extract-utils
         echo "Done cloning extract-utils."
-        git clone https://github.com/LineageOS/android_prebuilts_extract-tools -b lineage-21.0 ./android/prebuilts/extract-tools
+        git clone https://github.com/LineageOS/android_prebuilts_extract-tools ./android/prebuilts/extract-tools
         echo "Done cloning extract-tools."
 
     - name: Extracting Files from Dump
