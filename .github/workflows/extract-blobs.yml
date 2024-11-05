@@ -6,23 +6,23 @@ on:
       FIRMWARE_DUMP_REPO:
         description: 'Your Firmware Dump URL'
         required: true
-        default: 'https://gitlab.com/kelexine/tecno-spark-8c-kg5j-rom-dump.git'
+        default: 'https://github.com/isus203/dump_TECNO_LD7j'
       DEVICE_TREE_REPO:
         description: 'Your Android Device Tree URL'
         required: true
-        default: 'https://github.com/kelexine/android_device_tecno_kelly'
+        default: 'https://github.com/isus203/lineage_device_TECNO_LD7j'
       DEVICE_CODENAME:
         description: 'Your Device Codename'
         required: true
-        default: 'kelly'
+        default: 'LD7j'
       DEVICE_VENDORNAME:
         description: 'Your Device OEM Name'
         required: true
-        default: 'tecno'
+        default: 'TECNO'
       USER_NAME:
         description: 'Name in Github Account'
         required: true
-        default: 'kelexine'
+        default: 'isus203'
       USER_EMAIL:
         description: 'E-mail in Github Account'
         required: true
@@ -98,6 +98,7 @@ jobs:
         
     - name: Push to Github as Repository
       run: |
+        ls -al
         cd workspace/android/vendor/${{ env.DVN }}
         if [ -d ${{ env.DCN }} ]; then
         cd ${{ env.DCN }}
